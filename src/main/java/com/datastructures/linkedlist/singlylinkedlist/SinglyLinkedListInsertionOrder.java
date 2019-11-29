@@ -36,6 +36,7 @@ public class SinglyLinkedListInsertionOrder {
 
     private void addLast(int data){
         Node last=new Node(data);
+
         Node checkNode=head;
         while(checkNode!=null){
             if(checkNode.next==null) {
@@ -43,6 +44,9 @@ public class SinglyLinkedListInsertionOrder {
                 break;
             }
             checkNode=checkNode.next;
+        }
+        if(head==null){
+            head=last;
         }
     }
 
@@ -57,6 +61,9 @@ public class SinglyLinkedListInsertionOrder {
             }
             checkNode=checkNode.next;
 
+        }
+        if(head==null){
+            head=node;
         }
     }
 
