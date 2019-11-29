@@ -15,12 +15,14 @@ public class SinglyLinkedListInsertionOrder {
 
     public static void main(String[] args) {
         SinglyLinkedListInsertionOrder singlyLinkedListInsertionOrder=new SinglyLinkedListInsertionOrder();
-//        singlyLinkedListInsertionOrder.addFront(3);
-//        singlyLinkedListInsertionOrder.addFront(4);
-//        singlyLinkedListInsertionOrder.addFront(5);
+        singlyLinkedListInsertionOrder.addFront(3);
+        singlyLinkedListInsertionOrder.addFront(4);
+        singlyLinkedListInsertionOrder.addFront(5);
 
 
         singlyLinkedListInsertionOrder.addLast(10);
+
+        singlyLinkedListInsertionOrder.addAfter(4,15);
         singlyLinkedListInsertionOrder.printList();
 
     }
