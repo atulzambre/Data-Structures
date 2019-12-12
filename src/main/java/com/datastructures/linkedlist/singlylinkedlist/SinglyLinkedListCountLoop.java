@@ -6,19 +6,8 @@ package com.datastructures.linkedlist.singlylinkedlist;
 public class SinglyLinkedListCountLoop {
     Node head;
 
-    public static class Node {
-
-        int data;
-        Node next;
-
-        Node(int data) {
-            this.data = data;
-            next = null;
-        }
-    }
-
     public static void main(String[] args) {
-        SinglyLinkedListCountLoop singlyLinkedListCountLoop=new SinglyLinkedListCountLoop();
+        SinglyLinkedListCountLoop singlyLinkedListCountLoop = new SinglyLinkedListCountLoop();
 
         singlyLinkedListCountLoop.head = new Node(1);
         Node n2 = new Node(2);
@@ -40,14 +29,14 @@ public class SinglyLinkedListCountLoop {
     }
 
     private void detectLoopCount() {
-        Node slow_ptr=head;
-        Node fast_ptr=head;
+        Node slow_ptr = head;
+        Node fast_ptr = head;
 
-        while(fast_ptr!=null&&fast_ptr.next!=null){
-            fast_ptr=fast_ptr.next.next;
-            slow_ptr=slow_ptr.next;
-            if(fast_ptr==slow_ptr){
-                System.out.print("Loop Count is :"+ countLoop(slow_ptr));
+        while (fast_ptr != null && fast_ptr.next != null) {
+            fast_ptr = fast_ptr.next.next;
+            slow_ptr = slow_ptr.next;
+            if (fast_ptr == slow_ptr) {
+                System.out.print("Loop Count is :" + countLoop(slow_ptr));
                 break;
             }
 
@@ -55,14 +44,25 @@ public class SinglyLinkedListCountLoop {
 
     }
 
-    private int countLoop(Node slow_ptr){
-        Node count_ptr=slow_ptr.next;
-        int count=1;
+    private int countLoop(Node slow_ptr) {
+        Node count_ptr = slow_ptr.next;
+        int count = 1;
 
-        while(count_ptr!=slow_ptr){
-           count_ptr=count_ptr.next;
+        while (count_ptr != slow_ptr) {
+            count_ptr = count_ptr.next;
             count++;
         }
         return count;
+    }
+
+    public static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
     }
 }

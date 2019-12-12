@@ -19,21 +19,21 @@ public class SinglyLinkedListPalindrome {
     }
 
     private void isPalindromeStack() {
-        Node checkNode =head;
-        Stack<Integer> palindromeCheckStack=new Stack<>();
-        while(checkNode!=null){
+        Node checkNode = head;
+        Stack<Integer> palindromeCheckStack = new Stack<>();
+        while (checkNode != null) {
             palindromeCheckStack.push(checkNode.data);
-            checkNode=checkNode.next;
+            checkNode = checkNode.next;
         }
-        checkNode=head;
-        while(checkNode!=null){
-            if(checkNode.data==palindromeCheckStack.peek())
+        checkNode = head;
+        while (checkNode != null) {
+            if (checkNode.data == palindromeCheckStack.peek())
                 palindromeCheckStack.pop();
 
-            checkNode=checkNode.next;
+            checkNode = checkNode.next;
         }
 
-        if(palindromeCheckStack.empty())
+        if (palindromeCheckStack.empty())
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
