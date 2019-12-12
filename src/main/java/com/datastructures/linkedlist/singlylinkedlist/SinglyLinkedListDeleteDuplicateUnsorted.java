@@ -24,11 +24,34 @@ public class SinglyLinkedListDeleteDuplicateUnsorted {
         singlyLinkedListDeleteDuplicateUnsorted.push(1);
         singlyLinkedListDeleteDuplicateUnsorted.push(2);
         singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.push(3);
+        singlyLinkedListDeleteDuplicateUnsorted.printList();
+        System.out.println("\n---------after deletion----------");
+        singlyLinkedListDeleteDuplicateUnsorted.deleteDuplicateUnsorted();
         singlyLinkedListDeleteDuplicateUnsorted.printList();
     }
 
     private void deleteDuplicateUnsorted(){
-
+            Node checkNode=head;
+            while(checkNode!=null){
+                Node temp=checkNode.next;
+                Node prev=checkNode;
+                while(temp!=null){
+                    if(temp.data==checkNode.data){
+                        prev.next=temp.next;
+                        temp=temp.next;
+                    }
+                    else{
+                        temp=temp.next;
+                        prev=prev.next;
+                    }
+                }
+                checkNode=checkNode.next;
+            }
     }
 
     private void push(int data){
