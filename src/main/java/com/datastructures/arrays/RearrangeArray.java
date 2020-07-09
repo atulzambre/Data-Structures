@@ -4,13 +4,22 @@ import com.sun.org.apache.xalan.internal.res.XSLTErrorResources_en;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Random;
 
 public class RearrangeArray {
     public static void main(String[] args) {
 
         int maxA=1000;
-        int rearrangeArray[]={50, 40, 70, 60, 90};
-        int indexArray[]={3,  0,  4,  1,  2};
+//        int rearrangeArray[]={50, 40, 70, 60, 90,56,43,25,60};
+//        int indexArray[]=    {3,  0,  4,  1,  2,5,7,8,6};
+
+        int rearrangeArray[]={ 2,1, 3, 2, 4, 7,6, 9, 10 };
+
+        int mat[][]={ {10, 20, 30, 40},
+                {15, 25, 35, 45},
+                {25, 29, 37, 48},
+                {32, 33, 39, 50},
+        };
 
 //        for(int i=0;i<maxA;i++){
 //            rearrangeArray[i]=i;
@@ -22,8 +31,110 @@ public class RearrangeArray {
 //        posEvenGreaterThenOdd(rearrangeArray,rearrangeArray.length);
 //        smallestLargest2ndSmallest2ndLargest(rearrangeArray,rearrangeArray.length);
 //        doubleTheFirstElementAndMoveZeroToEnd(rearrangeArray,rearrangeArray.length);
-        reorderAnArrayAccordingToGivenIndex(rearrangeArray,rearrangeArray.length,indexArray);
+//        reorderAnArrayAccordingToGivenIndex(rearrangeArray,rearrangeArray.length,indexArray);
+//        reorderAnArrayAccordingToGivenIndexWithoutAuxilaryComplexity(rearrangeArray,rearrangeArray.length,indexArray);
 
+
+//        formBiggestNumber(rearrangeArray,rearrangeArray.length);
+//        replaceIndexWithValue(rearrangeArray,rearrangeArray.length);
+
+        //fisher-yates algorithm
+//        randomArray(rearrangeArray,rearrangeArray.length);
+//        rearrangeArrayAllEvenFirstAllOddLast(rearrangeArray,rearrangeArray.length);
+//        kThSmallestInMatrix(mat,mat.length,3);
+        findThreeLargestInArray(rearrangeArray,rearrangeArray.length);
+
+
+    }
+
+    private static void findThreeLargestInArray(int[] rearrangeArray, int length) {
+        int i,first,second,third;
+        first=third=second=Integer.MIN_VALUE;
+        for(i=0;i<length;i++){
+            if(rearrangeArray[i]>first){
+                third=second;
+                second=first;
+                first=rearrangeArray[i];
+            }
+            else if(rearrangeArray[i]>second){
+                third=second;
+                second=rearrangeArray[i];
+            }
+            else{
+                third=rearrangeArray[i];
+            }
+        }
+        System.out.println("largest three elements: "+first+","+second+","+third);
+    }
+
+    private static void kThSmallestInMatrix(int[][] mat, int length, int k) {
+        int mergedList[]=new int[length*length];
+        int count=0;
+        for(int i=0;i<length;i++){
+            for(int j=0;j<length;j++){
+                mergedList[count++]=mat[i][j];
+            }
+
+        }
+        Arrays.sort(mergedList);
+        System.out.println("kth Smallest elements is:" +mergedList[k]);
+    }
+
+    private static void rearrangeArrayAllEvenFirstAllOddLast(int[] rearrangeArray, int length) {
+
+        int i=-1,j=0;
+        while(j!=length){
+            if(rearrangeArray[j]%2==0){
+               i++;
+               int temp=rearrangeArray[j];
+               rearrangeArray[j]=rearrangeArray[i];
+               rearrangeArray[i]=temp;
+            }
+            j++;
+        }
+        System.out.println(Arrays.toString(rearrangeArray));
+
+    }
+
+    private static void randomArray(int[] rearrangeArray, int length) {
+        Random random=new Random();
+        for(int i=length-1;i>0;i--){
+            int ran=random.nextInt(i+1);
+            int temp=rearrangeArray[ran];
+            rearrangeArray[ran]=rearrangeArray[i];
+            rearrangeArray[i]=temp;
+        }
+        System.out.println(Arrays.toString(rearrangeArray));
+    }
+
+    private static void replaceIndexWithValue(int[] rearrangeArray, int length) {
+       int sml[]=new int[length];
+       for(int i=0;i<length;i++){
+           int temp=rearrangeArray[i];
+           sml[temp]=i;
+       }
+        System.out.println(Arrays.toString(sml));
+    }
+
+    //need to work on this problem
+    private static void formBiggestNumber(int[] rearrangeArray, int length) {
+        Arrays.sort(rearrangeArray);
+
+    }
+
+    private static void reorderAnArrayAccordingToGivenIndexWithoutAuxilaryComplexity(int[] rearrangeArray, int length, int[] indexArray) {
+        for(int i=0;i<length;i++){
+            int indexValue=indexArray[i];
+//            int arrayValue=rearrangeArray[i];
+
+            int temp=rearrangeArray[indexValue];
+            rearrangeArray[indexValue]=rearrangeArray[i];
+            rearrangeArray[i]=temp;
+            int indexCheck=indexArray[indexValue];
+            indexArray[indexValue]=indexArray[i];
+            indexArray[i]=indexCheck;
+        }
+        System.out.println(Arrays.toString(rearrangeArray));
 
     }
 
