@@ -18,6 +18,7 @@ public class PerfectBinaryTree {
         if(isPerfect(root)){
             System.out.println("This is a perfect binary tree!");
         }
+
         else{
             System.out.println("this is not a perfect binary tree!");
         }
