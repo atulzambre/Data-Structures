@@ -3,6 +3,9 @@ package com.datastructures.tree;
 class Node {
    int item;
    Node left,right;
+   public Node(){
+
+   }
 
     public Node(int item) {
         this.item = item;
