@@ -20,23 +20,22 @@ public class OrderStatisticArray {
 //        smallestMissingNumber(arr,arr.length,10);
 //        largestSubarraySumProblem(arr, arr.length);
         //this needs to be developed later
-        twoTimeBuySellShares(arr,arr.length);
+        twoTimeBuySellShares(arr, arr.length);
 
     }
 
     private static void twoTimeBuySellShares(int[] arr, int length) {
-        int profit[]=new int[length];
-        int max_price=arr[length-1];
-        for (int i=length-2;i>=0;i--){
-            if (max_price<arr[i]){
-                max_price=arr[i];
+        int profit[] = new int[length];
+        int max_price = arr[length - 1];
+        for (int i = length - 2; i >= 0; i--) {
+            if (max_price < arr[i]) {
+                max_price = arr[i];
             }
-            profit[i]=Math.max(profit[i+1],max_price-arr[i]);
+            profit[i] = Math.max(profit[i + 1], max_price - arr[i]);
 
         }
         int min_price = arr[0];
-        for (int i=1; i<length; i++)
-        {
+        for (int i = 1; i < length; i++) {
             // min_price is minimum price in price[0..i]
             if (arr[i] < min_price)
                 min_price = arr[i];
@@ -45,10 +44,10 @@ public class OrderStatisticArray {
             // a) previous maximum, i.e., profit[i-1]
             // b) (Buy, Sell) at (min_price, price[i]) and add
             //    profit of other trans. stored in profit[i]
-            profit[i] = Math.max(profit[i-1], profit[i] +
-                    (arr[i]-min_price) );
+            profit[i] = Math.max(profit[i - 1], profit[i] +
+                    (arr[i] - min_price));
         }
-        System.out.println(profit[length-1]);
+        System.out.println(profit[length - 1]);
     }
 
     private static void largestSubarraySumProblem(int[] arr, int length) {
